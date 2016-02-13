@@ -25,3 +25,5 @@ kadira:flow-router
 kadira:react-layout
 fortawesome:fontawesome
 momentjs:moment
+cfs:standard-packages
+cfs:filesystem
