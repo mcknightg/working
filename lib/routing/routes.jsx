@@ -19,3 +19,11 @@ privateRoutes.route('/dashboard', {
         })
     }
 });
+publicRoutes.route('/signout',{
+    name:'Signout',
+    action:function(){
+        Meteor.logout(function(){
+            FlowRouter.go('/');
+        })
+    }
+});
