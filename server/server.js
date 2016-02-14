@@ -10,5 +10,13 @@ Meteor.methods({
             comments:[]
         };
         Posts.insert(post);
+    },
+    'changeAvatar':function(user,fileid){
+        var file = 'http://placehold.it/150x150';
+        if(fileid){
+            file = Images.findOne({_id:fileid});
+        }
+        var data = file._id;
+        Meteor.users.update(Meteor.userId(),{$set:{'profile.avatar':data}})
     }
 });
