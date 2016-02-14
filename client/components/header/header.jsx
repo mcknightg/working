@@ -17,7 +17,7 @@ Header = React.createClass({
     },
     handleSubmit(e){
        e.preventDefault();
-        this.setState({message:message,messageClass:'hidden'});
+        this.setState({message:'',messageClass:'hidden'});
         var that = this;
         var email = ReactDOM.findDOMNode(this.refs.email).value.trim();
         var password = ReactDOM.findDOMNode(this.refs.password).value.trim();
@@ -36,7 +36,7 @@ Header = React.createClass({
                     <i className="fa fa-facebook"></i>akebook
                 </span>
                 <div className="collapse navbar-collapse" id="navbar">
-                    <form role="form" id="signin" className="navbar-form navbar-right">
+                    <form onSubmit={this.handleSubmit} role="form" id="signin" className="navbar-form navbar-right">
                         <div className="input-group">
                             <span className="input-group-addon">
                                 <i className="fa fa-user"></i>
@@ -50,6 +50,8 @@ Header = React.createClass({
                             <input placeholder="Password" type="password" ref="password" className="form-control"/>
                         </div>
                         <button type="submit" className="btn btn-primary">Login</button>
+                        <br/>
+                        <span className={this.state.messageClass}>{this.state.message}</span>
                     </form>
                 </div>
             </div>
