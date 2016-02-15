@@ -1,9 +1,8 @@
 Meteor.methods({
-    'Posts.insert':function(message,imageid,imageurl){
+    'Posts.insert':function(message,imageurl){
         var post = {
             user:Meteor.user(),
             createdAt:new Date(),
-            image:imageid,
             imageurl:imageurl,
             message:message,
             likes:[],
@@ -18,5 +17,8 @@ Meteor.methods({
         }
         var data = file._id;
         Meteor.users.update(Meteor.userId(),{$set:{'profile.avatar':data}})
+    },
+    'likePost':function(userid,postid){
+        Posts.update(postid,{$addToSet:{likes:userid}});
     }
 });
